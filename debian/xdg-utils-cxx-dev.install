@@ -1,0 +1,4 @@
+usr/include/XdgUtils/*
+usr/lib/*/cmake/XdgUtils/*
+usr/lib/*/libXdgUtilsBaseDir.so
+usr/lib/*/libXdgUtilsDesktopEntry.so
