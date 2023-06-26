@@ -1,15 +1,94 @@
-Source: template-repository
-Section: unknown
+Source: xdg-utils-cxx
+Section: libs
 Priority: optional
-Maintainer: Tsic404 <liuheng@deepin.org>
-Build-Depends: debhelper (>= 11)
-Standards-Version: 4.1.3
-Homepage: https://github.com/deepin-community/template-repository
-#Vcs-Browser: https://salsa.debian.org/debian/deepin-community-template-repository
-#Vcs-Git: https://salsa.debian.org/debian/deepin-community-template-repository.git
+Maintainer: Scarlett Moore <sgmoore@kde.org>
+Build-Depends:
+ cmake,
+ debhelper-compat (= 13),
+ pkg-kde-tools,
+Standards-Version: 4.6.1
+Homepage: https://github.com/azubieta/xdg-utils-cxx
+Vcs-Browser: https://salsa.debian.org/qt-kde-team/3rdparty/xdg-utils-cxx
+Vcs-Git: https://salsa.debian.org/qt-kde-team/3rdparty/xdg-utils-cxx
+Rules-Requires-Root: no
 
-Package: template-repository
+Package: xdg-utils-cxx-dev
+Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Multi-Arch: same
+Depends:
+ libxdgutilsbasedir1.0.1 (= ${binary:Version}),
+ libxdgutilsdesktopentry1.0.1 (= ${binary:Version}),
+ ${misc:Depends},
+Breaks:
+ xdg-utils-cxx (<< 1.0.1-3~),
+Replaces:
+ xdg-utils-cxx (<< 1.0.1-3~),
+Description: Implementation of the Free Desktop Standards in C++
+ This project was started to fulfill the need of a reliable
+ implementations of such standards in the AppImage project.
+ It is totally standalone and only depends on
+ the standard c++ library (stdlib).
+ .
+ It has been split in different modules according to the
+ Free Desktop Standards, the current implemented ones are:
+    - Desktop Entry 1.2 (mostly complete)
+    - Base Dir 0.7 (draft)
+ .
+ These are the development files for xdg-utils-cxx Desktop Entry
+ and BaseDir components.
+
+Package: libxdgutilsdesktopentry1.0.1
+Architecture: any
+Multi-Arch: same
+Breaks:
+ xdg-utils-cxx (<< 1.0.1-3~),
+Replaces:
+ xdg-utils-cxx (<< 1.0.1-3~),
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: Implementation Desktop Entry in Free Desktop Standards for C++
+ This project was started to fulfill the need of a reliable
+ implementations of such standards in the AppImage project.
+ It is totally standalone and only depends on
+ the standard c++ library (stdlib).
+ .
+ It has been split in different modules according to the
+ Free Desktop Standards, the current implemented ones are:
+    - Desktop Entry 1.2 (mostly complete)
+    - Base Dir 0.7 (draft)
+ .
+ This is the library files for Desktop Entry.
+
+Package: libxdgutilsbasedir1.0.1
+Architecture: any
+Multi-Arch: same
+Breaks:
+ xdg-utils-cxx (<< 1.0.1-3~),
+Replaces:
+ xdg-utils-cxx (<< 1.0.1-3~),
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: Implementation BaseDir in Free Desktop Standards for C++
+ This project was started to fulfill the need of a reliable
+ implementations of such standards in the AppImage project.
+ It is totally standalone and only depends on
+ the standard c++ library (stdlib).
+ .
+ It has been split in different modules according to the
+ Free Desktop Standards, the current implemented ones are:
+    - Desktop Entry 1.2 (mostly complete)
+    - Base Dir 0.7 (draft)
+ .
+ This is the library files for BaseDir.
+
+Package: xdg-utils-cxx
+Architecture: any
+Depends:
+ xdg-utils-cxx-dev (= ${binary:Version}),
+ ${misc:Depends},
+Section: oldlibs
+Description: Core libraries for xdg-utils-cxx - transitional
+ This is a dummy transitional package which can be removed.

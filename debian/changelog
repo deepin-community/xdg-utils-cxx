@@ -1,5 +1,56 @@
-template-repository (1.0-1) unstable; urgency=medium
+xdg-utils-cxx (1.0.1-3.1) unstable; urgency=medium
 
-  * Initial release
+  * Non-maintainer upload.
+  * debian/*.symbols: Dropped, use shlibs file instead to avoid
+    C++ symbol mess. Using symbols file is also unnecessary since
+    the version string is embedded in SONAME. (Closes: #1004109)
+  * debian/*.shlibs: Added, use required version (>= 1.0.1).
+  * debian/control: Fix typo.
+  * debian/control: Let xdg-utils-cxx depends on xdg-utils-cxx-dev
+    for proper package transition.
+  * debian/control: Drop ${shlibs:Depends} substvar for dev package.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Boyuan Yang <byang@debian.org>  Sat, 30 Jul 2022 21:06:24 -0400
+
+xdg-utils-cxx (1.0.1-3) unstable; urgency=medium
+
+  * Add patches provided by Assassin to fix issues with targets and
+    upstream uses of this library.
+    - Fix the SO version.
+    - Fix the install path to be in a searched lib path.
+    - Clean up patches and make them DEP 3 compliant.
+  * Convert package to libraries and dev packages for symbols
+    handling.
+    - Break package into libraries and dev packages with
+      virtual package for old package.
+    - Use pkg-kde-tools for easier symbols handling.
+    - Add new symbols files for libraries.
+  * Remove unused dependency pkg-config.
+  * Fix lintian errors.
+    - Rename packages to match SO version.
+    - Fix spelling error.
+    - Fix hardening export in rules.
+  * Remove dh_missing override as --fail-missing is now default.
+  * Fix pkgkde addons call, use out of source build directory.
+  * Don't build tests as these do not test the installed binaries.
+  * Remove excess build dir overrides as now we use global override.
+  * Release to unstable.
+
+ -- Scarlett Moore <sgmoore@kde.org>  Thu, 11 Mar 2021 12:24:59 -0700
+
+xdg-utils-cxx (1.0.1-2) unstable; urgency=medium
+
+  * Update copyright with missing entry.
+    - Refresh formatting.
+  * Update standards version to 4.5.1; no changes needed.
+  * Add upstream patch to fix typo. (lintain)
+  * Release to unstable.
+
+ -- Scarlett Moore <sgmoore@kde.org>  Tue, 19 Jan 2021 10:08:38 -0700
+
+xdg-utils-cxx (1.0.1-1) unstable; urgency=medium
+
+  [ Scarlett Moore ]
+  * Initial release (Closes: #934253)
+
+ -- Scarlett Moore <sgmoore@kde.org>  Wed, 13 Jan 2021 14:35:26 -0700

@@ -1,4 +1,10 @@
 #!/usr/bin/make -f
+export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
 %:
-	dh $@
+	dh $@ --with pkgkde-symbolshelper -Bbuild
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DCMAKE_BUILD_TYPE=Release -DXDG_UTILS_SHARED=ON -DXDG_UTILS_TESTS=OFF
